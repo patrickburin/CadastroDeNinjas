@@ -20,8 +20,7 @@ public class MissoesModel {
   private Long id;
   private String nome;
   private String dificuldade;
-  // @OneToMany = uma missao para muitos ninjas
-  @OneToMany(mappedBy = "missoes")
+  @OneToMany(mappedBy = "missoes") // @OneToMany = uma missao para muitos ninjas
   private List<NinjaModel> ninjas;
 
 }
