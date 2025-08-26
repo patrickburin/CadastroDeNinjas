@@ -20,8 +20,8 @@ public class NinjaController {
   }
 
   @PostMapping("/criar")
-  public String criarNinja() {
-    return "Ninja criado";
+  public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {//o @RequestBody pega o body e transforma em um ninja do tipo NinjaModel
+    return ninjaService.criarNinja(ninja);
   }
 
   @GetMapping("/listar")
@@ -30,7 +30,7 @@ public class NinjaController {
   }
 
   @GetMapping("/listar/{id}")
-  public NinjaModel listarNinjasPorId(@PathVariable Long id) {
+  public NinjaModel listarNinjasPorId(@PathVariable Long id) {//o @PathVariable pega a info da url pra se referir ao id do ninja que deseja
     return ninjaService.listarNinjasPorId(id);
   }
 

@@ -22,9 +22,8 @@ public class NinjaService {
     Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id); //esse optional serve para trabalhar caso não tenha um ninja com o id recebido
     return ninjaPorId.orElse(null); //o orElse serve para tratar o caso do id não existir, ele e o Optional trabalham juntos nisso
   }
- /*oq pode ser usado ao inves do de cima
-    public Optional<NinjaModel> listarNinjasPorId(Long id) {
-      return ninjaRepository.findById(id);
-    }
- */
+
+  public NinjaModel criarNinja(NinjaModel ninja) {
+    return ninjaRepository.save(ninja);
+  }
 }
