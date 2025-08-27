@@ -20,7 +20,7 @@ public class NinjaController {
   }
 
   @PostMapping("/criar")
-  public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {//o @RequestBody pega o body e transforma em um ninja do tipo NinjaModel
+  public NinjaDTO criarNinja(@RequestBody NinjaDTO ninja) {//o @RequestBody pega o body e transforma em um ninja do tipo NinjaModel
     return ninjaService.criarNinja(ninja);
   }
 
