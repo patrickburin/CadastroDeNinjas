@@ -25,17 +25,17 @@ public class NinjaController {
   }
 
   @GetMapping("/listar")
-  public List<NinjaModel> listarNinjas() {
+  public List<NinjaDTO> listarNinjas() {
     return ninjaService.listarNinjas();
   }
 
   @GetMapping("/listar/{id}")
-  public NinjaModel listarNinjasPorId(@PathVariable Long id) {//o @PathVariable pega a info (id) pra se referir ao id do ninja que deseja
+  public NinjaDTO listarNinjasPorId(@PathVariable Long id) {//o @PathVariable pega a info (id) pra se referir ao id do ninja que deseja
     return ninjaService.listarNinjasPorId(id);
   }
 
   @PutMapping("/alterar/{id}")
-  public NinjaModel alterarNinjaPorId(@PathVariable Long id, @RequestBody NinjaModel ninja) { //pathvariable pra pegar o id e o requestbody pra pegar o conteúdo do corpo
+  public NinjaDTO alterarNinjaPorId(@PathVariable Long id, @RequestBody NinjaDTO ninja) { //pathvariable pra pegar o id e o requestbody pra pegar o conteúdo do corpo
     return ninjaService.atualizarNinja(id, ninja);
   }
 
