@@ -1,5 +1,8 @@
 package dev.java10x.CadastroDeNinjas.Ninjas;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,11 @@ public class NinjaController {
   }
 
   @PostMapping("/criar")
+  @Operation(summary = "Cria um novo ninja", description = "Rota cria um novo ninja e insere no banco de dados")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "201", description = "Ninja criado com sucesso!"),
+      @ApiResponse(responseCode = "400", description = "Erro na criação do ninja")
+  })
   public ResponseEntity<String> criarNinja(@RequestBody NinjaDTO ninja) {
 
     NinjaDTO ninjaDTO = ninjaService.criarNinja(ninja);
@@ -32,6 +40,11 @@ public class NinjaController {
   }
 
   @GetMapping("/listar/{id}")
+  @Operation(summary = "Lista o ninja por ID", description = "Rota lista um ninja pelo ID")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "201", description = "Ninja listado com sucesso!"),
+      @ApiResponse(responseCode = "400", description = "Ninja não encontrado")
+  })
   public ResponseEntity<?> listarNinjasPorId(@PathVariable Long id) {
     NinjaDTO ninjaDTO = ninjaService.listarNinjasPorId(id);
 
@@ -44,6 +57,11 @@ public class NinjaController {
   }
 
   @PutMapping("/alterar/{id}")
+  @Operation(summary = "Altera o ninja por ID", description = "Rota altera um ninja pelo ID")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "201", description = "Ninja listado com sucesso!"),
+      @ApiResponse(responseCode = "400", description = "Ninja não encontrado, não foi possível alterar")
+  })
   public ResponseEntity<String> alterarNinjaPorId(@PathVariable Long id, @RequestBody NinjaDTO ninja) {
     NinjaDTO ninjaDTO = ninjaService.atualizarNinja(id, ninja);
 
